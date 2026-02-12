@@ -1,30 +1,30 @@
 /* ============================================
    HTML Viewer — Preview Engine
-   itechniqs.github.io/htmlviewer
+   itechniqs.github.io/htmlpreview
    ============================================ */
 
 (function () {
   'use strict';
 
   // --- DOM References ---
-  const previewForm   = document.getElementById('previewForm');
-  const urlInput      = document.getElementById('urlInput');
-  const previewBtn    = document.getElementById('previewBtn');
-  const heroSection   = document.getElementById('heroSection');
-  const previewArea   = document.getElementById('previewArea');
+  const previewForm = document.getElementById('previewForm');
+  const urlInput = document.getElementById('urlInput');
+  const previewBtn = document.getElementById('previewBtn');
+  const heroSection = document.getElementById('heroSection');
+  const previewArea = document.getElementById('previewArea');
   const previewIframe = document.getElementById('previewIframe');
   const iframeContainer = document.getElementById('iframeContainer');
-  const loadingOverlay  = document.getElementById('loadingOverlay');
+  const loadingOverlay = document.getElementById('loadingOverlay');
   const previewUrlDisplay = document.getElementById('previewUrlDisplay');
-  const copyLinkBtn   = document.getElementById('copyLinkBtn');
-  const newTabBtn      = document.getElementById('newTabBtn');
+  const copyLinkBtn = document.getElementById('copyLinkBtn');
+  const newTabBtn = document.getElementById('newTabBtn');
   const closePreviewBtn = document.getElementById('closePreviewBtn');
-  const toastContainer  = document.getElementById('toastContainer');
-  const recentSection   = document.getElementById('recentSection');
-  const recentList      = document.getElementById('recentList');
+  const toastContainer = document.getElementById('toastContainer');
+  const recentSection = document.getElementById('recentSection');
+  const recentList = document.getElementById('recentList');
 
-  const STORAGE_KEY = 'htmlviewer_recent';
-  const MAX_RECENT  = 5;
+  const STORAGE_KEY = 'htmlpreview_recent';
+  const MAX_RECENT = 5;
 
   let currentRawUrl = '';
   let currentGithubUrl = '';

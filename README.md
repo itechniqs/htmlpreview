@@ -2,7 +2,7 @@
 
 > Preview any GitHub or BitBucket HTML file directly in your browser — no cloning, no downloads.
 
-**Live:** [itechniqs.github.io/htmlviewer](https://itechniqs.github.io/htmlviewer/)
+**Live:** [itechniqs.github.io/htmlpreview](https://itechniqs.github.io/htmlpreview/)
 
 ## ✨ Features
 
@@ -18,32 +18,32 @@
 ## 🚀 Usage
 
 ### Option 1: Visit the site
-Go to [itechniqs.github.io/htmlviewer](https://itechniqs.github.io/htmlviewer/) and paste a URL.
+Go to [itechniqs.github.io/htmlpreview](https://itechniqs.github.io/htmlpreview/) and paste a URL.
 
 ### Option 2: Prepend to URL
 ```
-https://itechniqs.github.io/htmlviewer/?https://github.com/twbs/bootstrap/blob/gh-pages/2.3.2/index.html
+https://itechniqs.github.io/htmlpreview/?https://github.com/twbs/bootstrap/blob/gh-pages/2.3.2/index.html
 ```
 
 ### Option 3: Run locally
 ```bash
-git clone https://github.com/itechniqs/htmlviewer.git
-cd htmlviewer
+git clone https://github.com/itechniqs/htmlpreview.git
+cd htmlpreview
 python3 -m http.server 8080
 # Open http://localhost:8080
 ```
 
 ## 🏗️ Deploy to GitHub Pages
 
-1. Push this repo to `https://github.com/itechniqs/htmlviewer`
+1. Push this repo to `https://github.com/itechniqs/htmlpreview`
 2. Go to **Settings → Pages**
 3. Set source to `main` branch, root `/`
-4. Site will be live at `https://itechniqs.github.io/htmlviewer/`
+4. Site will be live at `https://itechniqs.github.io/htmlpreview/`
 
 ## 📁 Structure
 
 ```
-htmlviewer/
+htmlpreview/
 ├── index.html   # Main page
 ├── style.css    # Design system & styles
 ├── preview.js   # Preview engine
