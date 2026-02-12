@@ -24,7 +24,8 @@
   const recentSection = document.getElementById('recentSection');
   const recentList = document.getElementById('recentList');
   const tokenToggleBtn = document.getElementById('tokenToggleBtn');
-  const tokenDropdown = document.getElementById('tokenDropdown');
+  const tokenModal = document.getElementById('tokenModal');
+  const tokenModalClose = document.getElementById('tokenModalClose');
   const tokenInput = document.getElementById('tokenInput');
   const tokenSaveBtn = document.getElementById('tokenSaveBtn');
   const tokenStatus = document.getElementById('tokenStatus');
@@ -363,16 +364,30 @@
     urlInput.focus();
   });
 
-  // --- Token Toggle ---
+  // --- Token Modal ---
   tokenToggleBtn.addEventListener('click', function (e) {
     e.stopPropagation();
-    tokenDropdown.classList.toggle('visible');
+    tokenModal.classList.add('active');
+    setTimeout(function () { tokenInput.focus(); }, 100);
   });
 
-  // Close token dropdown when clicking outside
-  document.addEventListener('click', function (e) {
-    if (!tokenDropdown.contains(e.target) && e.target !== tokenToggleBtn) {
-      tokenDropdown.classList.remove('visible');
+  tokenModalClose.addEventListener('click', function () {
+    tokenModal.classList.remove('active');
+  });
+
+  // Close when clicking outside modal content
+  tokenModal.addEventListener('click', function (e) {
+    if (e.target === tokenModal) {
+      tokenModal.classList.remove('active');
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (tokenModal.classList.contains('active')) {
+        tokenModal.classList.remove('active');
+      }
     }
   });
 
