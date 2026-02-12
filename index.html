@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Viewer — Preview GitHub HTML Files Instantly | itechniqs</title>
+  <meta name="description" content="Preview any HTML file from GitHub or BitBucket directly in your browser. No downloads, no cloning — just paste the URL and go.">
+  <meta name="keywords" content="github html preview, html viewer, github pages, bitbucket html preview, itechniqs">
+  <meta name="author" content="itechniqs">
+  <meta property="og:title" content="HTML Viewer — Preview GitHub HTML Files Instantly">
+  <meta property="og:description" content="Preview any HTML file from GitHub or BitBucket directly in your browser. No downloads, no cloning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://itechniqs.github.io/htmlviewer/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%236366f1'/><text x='50' y='68' font-size='52' font-weight='bold' text-anchor='middle' fill='white'>&lt;/&gt;</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-gradient"></div>
+  <div class="bg-noise"></div>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <a href="./" class="logo">
+        <div class="logo-icon">&lt;/&gt;</div>
+        <div class="logo-text"><span>HTML Viewer</span></div>
+      </a>
+      <div class="header-actions">
+        <a href="https://github.com/itechniqs/htmlviewer" target="_blank" rel="noopener" class="btn-icon" title="View on GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+        Open Source &bull; No Backend
+      </div>
+      <h1 class="hero-title">
+        Preview <span class="gradient-text">GitHub HTML</span><br>files instantly
+      </h1>
+      <p class="hero-subtitle">
+        Paste any GitHub or BitBucket HTML file URL and render it in your browser — no cloning, no downloads.
+      </p>
+
+      <!-- Input Card -->
+      <div class="input-card">
+        <form id="previewForm" class="input-wrapper" autocomplete="off">
+          <div class="input-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <input
+            type="url"
+            id="urlInput"
+            class="url-input"
+            placeholder="https://github.com/user/repo/blob/main/index.html"
+            required
+            autofocus
+          >
+          <button type="submit" id="previewBtn" class="btn-preview">
+            <span class="btn-text">Preview</span>
+            <div class="spinner"></div>
+          </button>
+        </form>
+      </div>
+
+      <div class="usage-hint">
+        <span>Tip: prepend</span>
+        <code>https://itechniqs.github.io/htmlviewer/?</code>
+        <span>to any GitHub HTML URL</span>
+      </div>
+
+      <!-- Recent URLs -->
+      <div class="recent-section" id="recentSection" style="display:none;">
+        <div class="recent-label">Recent</div>
+        <div class="recent-list" id="recentList"></div>
+      </div>
+    </section>
+
+    <!-- Preview Area -->
+    <section class="preview-area" id="previewArea">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <div class="device-switcher">
+            <button class="device-btn active" data-device="desktop" title="Desktop">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+              <span>Desktop</span>
+            </button>
+            <button class="device-btn" data-device="tablet" title="Tablet">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              <span>Tablet</span>
+            </button>
+            <button class="device-btn" data-device="mobile" title="Mobile">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              <span>Mobile</span>
+            </button>
+          </div>
+        </div>
+        <div class="preview-url-display" id="previewUrlDisplay"></div>
+        <div class="toolbar-right">
+          <button class="btn-toolbar" id="copyLinkBtn" title="Copy shareable preview link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            <span>Copy Link</span>
+          </button>
+          <button class="btn-toolbar" id="newTabBtn" title="Open preview in new tab">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Open Raw</span>
+          </button>
+          <button class="btn-toolbar" id="closePreviewBtn" title="Close preview">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>Close</span>
+          </button>
+        </div>
+      </div>
+      <div class="iframe-container" id="iframeContainer" data-device="desktop">
+        <iframe id="previewIframe" class="preview-iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" title="HTML Preview"></iframe>
+        <div class="loading-overlay" id="loadingOverlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading preview…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      Built by <a href="https://github.com/itechniqs" target="_blank" rel="noopener">itechniqs</a> &bull;
+      Open Source on <a href="https://github.com/itechniqs/htmlviewer" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="preview.js"></script>
+</body>
+</html>
